@@ -115,6 +115,7 @@ func registerWebsocketHandler(rpcConfig *cfg.RPCConfig,
 	routes rpccore.RoutesMap,
 	logger log.Logger,
 	eventBus types.EventBusSubscriber) {
+	wmLogger := logger.With("protocol", "websocket")
 
 	websocketDisconnectFn := func(remoteAddr string) {
 		err := eventBus.UnsubscribeAll(context.Background(), remoteAddr)
@@ -123,7 +124,6 @@ func registerWebsocketHandler(rpcConfig *cfg.RPCConfig,
 		}
 	}
 
-	wmLogger := logger.With("protocol", "websocket")
 	wm := rpcserver.NewWebsocketManager(routes,
 		rpcserver.OnDisconnect(websocketDisconnectFn),
 		rpcserver.ReadLimit(rpcConfig.MaxBodyBytes))
