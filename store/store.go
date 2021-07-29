@@ -282,6 +282,10 @@ func (bs *BlockStore) LoadSeenCommit(height int64) *types.Commit {
 	return commit
 }
 
+func (bs *BlockStore) Close() error {
+	return bs.db.Close()
+}
+
 // PruneBlocks removes block up to (but not including) a height. It returns the number of blocks pruned.
 func (bs *BlockStore) PruneBlocks(height int64) (uint64, error) {
 	if height <= 0 {
