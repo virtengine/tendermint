@@ -6,7 +6,7 @@ import (
 	"github.com/tendermint/tendermint/types"
 )
 
-//go:generate mockery --case underscore --name Provider
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name Provider
 
 // Provider provides information for the light client to sync (verification
 // happens in the client).

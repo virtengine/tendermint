@@ -20,7 +20,7 @@ import (
 	"github.com/tendermint/tendermint/types"
 )
 
-//go:generate mockery --case underscore --name StateProvider
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name StateProvider
 
 // StateProvider is a provider of trusted state data for bootstrapping a node. This refers
 // to the state.State object, not the state machine.

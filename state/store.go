@@ -68,7 +68,7 @@ func init() {
 
 //----------------------
 
-//go:generate mockery --case underscore --name Store
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name Store
 
 // Store defines the state store interface
 //
@@ -93,8 +93,6 @@ type Store interface {
 	Bootstrap(State) error
 	// PruneStates takes the height from which to prune up to (exclusive)
 	PruneStates(int64) error
-	// Close closes the connection to the store.
-	Close() error
 }
 
 // dbStore wraps a db (github.com/tendermint/tm-db)
@@ -620,10 +618,6 @@ func (store dbStore) LoadConsensusParams(height int64) (types.ConsensusParams, e
 	}
 
 	return types.ConsensusParamsFromProto(paramsInfo.ConsensusParams), nil
-}
-
-func (store dbStore) Close() error {
-	return store.db.Close()
 }
 
 func (store dbStore) loadConsensusParamsInfo(height int64) (*tmstate.ConsensusParamsInfo, error) {

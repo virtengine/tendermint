@@ -16,7 +16,7 @@ const (
 	PSQL EventSinkType = "psql"
 )
 
-//go:generate mockery --case underscore --name EventSink
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name EventSink
 
 // EventSink interface is defined the APIs for the IndexerService to interact with the data store,
 // including the block/transaction indexing and the search functions.

@@ -72,8 +72,6 @@ func (debug *Debug) OnStart() error {
 }
 
 func (debug *Debug) OnStop() {
-	debug.stateStore.Close()
-	debug.blockStore.Close()
 	for _, listener := range debug.listeners {
 		listener.Close()
 	}

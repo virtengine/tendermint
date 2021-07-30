@@ -12,7 +12,7 @@ import (
 	"github.com/tendermint/tendermint/version"
 )
 
-//go:generate mockery --case underscore --name Transport|Connection
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name Transport|Connection
 
 const (
 	// defaultProtocol is the default protocol used for NodeAddress when

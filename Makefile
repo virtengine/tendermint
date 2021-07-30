@@ -237,7 +237,7 @@ build-docker: build-linux
 ###############################################################################
 
 mockery:
-	go generate -run="mockery" ./...
+	go generate -run="go run github.com/vektra/mockery/v2 --disable-version-string" ./...
 .PHONY: mockery
 
 ###############################################################################

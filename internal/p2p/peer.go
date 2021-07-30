@@ -14,7 +14,7 @@ import (
 	"github.com/tendermint/tendermint/types"
 )
 
-//go:generate mockery --case underscore --name Peer
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name Peer
 
 const metricsTickerDuration = 10 * time.Second
 

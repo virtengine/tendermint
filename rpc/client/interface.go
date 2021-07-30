@@ -29,7 +29,7 @@ import (
 	"github.com/tendermint/tendermint/types"
 )
 
-//go:generate mockery --case underscore --name Client
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name Client
 
 // Client wraps most important rpc calls a client would make if you want to
 // listen for events, test if it also implements events.EventSwitch.

@@ -26,13 +26,6 @@ func TestDebugConstructor(t *testing.T) {
 		d.OnStop()
 	})
 
-	t.Run("default", func(t *testing.T) {
-		d, err := node.NewDefaultDebug()
-		require.NoError(t, err)
-		require.NotNil(t, d)
-
-		d.OnStop()
-	})
 }
 
 func TestDebugRun(t *testing.T) {
@@ -48,14 +41,6 @@ func TestDebugRun(t *testing.T) {
 		d.OnStop()
 	})
 
-	t.Run("default", func(t *testing.T) {
-		d, err := node.NewDefaultDebug()
-		require.NoError(t, err)
-		err = d.OnStart()
-		require.NoError(t, err)
-		d.OnStop()
-	})
-
 }
 
 func TestDebugServeInfoRPC(t *testing.T) {
@@ -64,10 +49,8 @@ func TestDebugServeInfoRPC(t *testing.T) {
 	testBlock.Header.Height = testHeight
 	testBlock.Header.LastCommitHash = []byte("test hash")
 	stateStoreMock := &state_mocks.Store{}
-	stateStoreMock.On("Close").Return(nil)
 
 	blockStoreMock := &state_mocks.BlockStore{}
-	blockStoreMock.On("Close").Return(nil)
 	blockStoreMock.On("Height").Return(testHeight)
 	blockStoreMock.On("Base").Return(int64(0))
 	blockStoreMock.On("LoadBlockMeta", testHeight).Return(&types.BlockMeta{})

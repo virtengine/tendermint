@@ -9,7 +9,7 @@ import (
 // NOTE: Interfaces used by RPC must be thread safe!
 //------------------------------------------------------
 
-//go:generate mockery --case underscore --name BlockStore
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name BlockStore
 
 //------------------------------------------------------
 // blockstore
@@ -33,13 +33,12 @@ type BlockStore interface {
 
 	LoadBlockCommit(height int64) *types.Commit
 	LoadSeenCommit(height int64) *types.Commit
-	Close() error
 }
 
 //-----------------------------------------------------------------------------
 // evidence pool
 
-//go:generate mockery --case underscore --name EvidencePool
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name EvidencePool
 
 // EvidencePool defines the EvidencePool interface used by State.
 type EvidencePool interface {

@@ -7,7 +7,7 @@ import (
 	"github.com/tendermint/tendermint/abci/types"
 )
 
-//go:generate mockery --case underscore --name AppConnConsensus|AppConnMempool|AppConnQuery|AppConnSnapshot
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name AppConnConsensus|AppConnMempool|AppConnQuery|AppConnSnapshot
 
 //----------------------------------------------------------------------------------------
 // Enforce which abci msgs can be sent on a connection at the type level

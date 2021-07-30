@@ -15,7 +15,7 @@ const (
 	echoRetryIntervalSeconds = 1
 )
 
-//go:generate mockery --case underscore --name Client
+//go:generate go run github.com/vektra/mockery/v2 --disable-version-string --case underscore --name Client
 
 // Client defines an interface for an ABCI client.
 //
